@@ -20,3 +20,11 @@ Hi  Swift!
 >
 >
 >[Reverse Integer](https://leetcode.com/problems/reverse-integer/) -> [Link](https://github.com/GangWoon/Algorithm/blob/master/leetcode/ReverseInt/ReverseInt/main.swift)
+>
+>[Happy Number][https://leetcode.com/problems/happy-number/] -> [Link][https://github.com/GangWoon/Algorithm/blob/master/leetcode/HappyNumber/HappyNumber/main.swift]
+>
+>[Single Number][https://leetcode.com/problems/single-number/submissions/] -> [Link][https://github.com/GangWoon/Algorithm/blob/master/leetcode/SingleNumber/SingleNumber/main.swift]
+>
+>
+
+>[][]
