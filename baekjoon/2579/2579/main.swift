@@ -1,20 +1,26 @@
-// Reference ID: woongs
+import Foundation
 
-if let input = readLine() {
-    let n : Int = Int(input) ?? 0
-    var a: [Int] = []
-    for _ in 0 ..< n {
-        a.append(Int(readLine()!) ?? 0)
-    }
+func solution(_ name_list: [String]) -> Bool {
+    var result: Bool = false
     
-    var dp: (zero: Int, oneStep: Int, twoStep: Int) = (0, 0, 0)
-    
-    for i in 0 ..< n {
-        let temp = dp.oneStep > dp.twoStep ? dp.oneStep : dp.twoStep
-        dp.twoStep = dp.oneStep + a[i]
-        dp.oneStep = dp.zero + a[i]
-        dp.zero = temp
-        print(dp)
+    for (index, item) in name_list.enumerated() {
+        let temp = (index, item)
+        
+        for (secondIndex, secondItem) in name_list.enumerated() {
+            let secondTemp = (secondIndex, secondItem)
+            if temp == secondTemp {
+                continue
+            }
+            if secondItem.contains(temp.1) {
+                result = true
+            }
+        }
     }
-    print(dp.oneStep > dp.twoStep ? dp.oneStep : dp.twoStep)
+
+    
+    return result
 }
+
+
+print(solution(["봄","여울","봄봄"]))
+
