@@ -4,8 +4,8 @@
 
 import Foundation
 
-func createInformationDictionary(_ genres:[String], _ plays:[Int]) -> [Int: (genere: String, plays: Int)] {
-    var result: [Int: (genere: String, plays: Int)] = [: ]
+func createInformationDictionary(_ genres:[String], _ plays:[Int]) -> [Int: (genre: String, plays: Int)] {
+    var result: [Int: (genre: String, plays: Int)] = [: ]
     for index in 0..<genres.count {
         result
             .updateValue((genres[index], plays[index]),
@@ -15,11 +15,11 @@ func createInformationDictionary(_ genres:[String], _ plays:[Int]) -> [Int: (gen
     return result
 }
 
-func createRankDictioanry(_ dictionary: [Int: (genere: String, plays: Int)]) -> [String: Int]{
+func createRankDictioanry(_ dictionary: [Int: (genre: String, plays: Int)]) -> [String: Int]{
     var result: [String: Int] = [: ]
     dictionary.forEach {
-        let value = (result[$0.value.genere] ?? 0) + $0.value.plays
-        result.updateValue(value, forKey: $0.value.genere)
+        let value = (result[$0.value.genre] ?? 0) + $0.value.plays
+        result.updateValue(value, forKey: $0.value.genre)
     }
     
     return result
@@ -31,12 +31,12 @@ func solution(_ genres:[String], _ plays:[Int]) -> [Int] {
     
     return rank
         .sorted { $0.value > $1.value }
-        .map { genere in
+        .map { genre in
             return dictionary
-                .filter { $0.value.genere == genere.key }
+                .filter { $0.value.genre == genre.key }
         }
-        .map { genere in
-                genere
+        .map { genre in
+                genre
                     .sorted { (first, second) -> Bool in
                         if first.value.plays > second.value.plays { return true }
                         else if first.value.plays == second.value.plays {
