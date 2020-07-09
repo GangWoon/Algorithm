@@ -28,32 +28,26 @@ func createRankDictioanry(_ dictionary: [Int: (genere: String, plays: Int)]) -> 
 func solution(_ genres:[String], _ plays:[Int]) -> [Int] {
     let dictionary = createInformationDictionary(genres, plays)
     let rank = createRankDictioanry(dictionary)
-    var result: [Int] = []
-    rank
-        .sorted { $0.value > $1.value }
-        .map { song in
-            return dictionary
-                .filter { $0.value.genere == song.key }
-            }
-        .map{ item in
-            item
-                .sorted { (first, second) -> Bool in
-                    if first.value.plays > second.value.plays { return true }
-                    else if first.value.plays == second.value.plays {
-                        return first.key < second.key
-                    } else { return false }
-                }
-            }
-        .forEach {
-            if $0.count >= 2{
-                result.append($0[0].key)
-                result.append($0[1].key)
-            } else {
-                result.append($0[0].key)
-            }
-        }
     
-    return result
+    return rank
+        .sorted { $0.value > $1.value }
+        .map { genere in
+            return dictionary
+                .filter { $0.value.genere == genere.key }
+        }
+        .map { genere in
+                genere
+                    .sorted { (first, second) -> Bool in
+                        if first.value.plays > second.value.plays { return true }
+                        else if first.value.plays == second.value.plays {
+                            return first.key < second.key
+                        } else { return false }
+                    }
+        }
+        .reduce(into: []) {
+            $0.append($1[0].key)
+            if $1.count > 1 { $0.append($1[1].key) }
+        }
 }
 
 
