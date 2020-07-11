@@ -53,3 +53,4 @@ func solution(_ genres:[String], _ plays:[Int]) -> [Int] {
 
 print(solution(["classic", "pop", "classic", "classic", "pop"],
                [500, 600, 150, 800, 2500]))
+[1,2,3].append
