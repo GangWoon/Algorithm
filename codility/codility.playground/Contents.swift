@@ -1,3 +1,3 @@
-var a = [9, 3, 9, 3, 9 ,7, 9]
+var a = [2, 3, 1, 5]
 
-solution(10, 85, 30)
+solution(&a)

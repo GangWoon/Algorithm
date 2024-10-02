@@ -24,7 +24,7 @@
 //X ≤ Y.
 //Copyright
 
-public func solution(_ X : Int, _ Y : Int, _ D : Int) -> Int {
+public func FrogJmpsolution(_ X : Int, _ Y : Int, _ D : Int) -> Int {
   let result = (Y - X) / D
   let a = (Y - X) % D == 0 ? 0 : 1
   
