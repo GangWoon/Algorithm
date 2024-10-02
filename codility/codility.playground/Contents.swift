@@ -1,3 +1,3 @@
-var a = [2, 3, 1, 5]
 
-solution(&a)
+var a = [3, 1, 2, 4, 3]
+TapeEquilibriumsolution(&a)
