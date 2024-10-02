@@ -1,5 +1,3 @@
-import UIKit
+var a = [9, 3, 9, 3, 9 ,7, 9]
 
-var a = [3, 8, 9 , 7, 6]
-
-print(CyclicRotationsolution(&a, 4))
+OddOccurrencesInArraysolution(&a)
