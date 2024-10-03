@@ -1,5 +1,5 @@
 
-var a = [-3, 1, 2, -2, 5, 6]
-print(MaxProductOfThreesolution(&a))
+var a = [50, 10, 5 , 1]
+Trianglesolution(&a)
 
 
