@@ -1,5 +1,5 @@
 
-var a = [4, 2, 2, 5, 1, 5, 8]
-print(Distinctsolution(&a))
+var a = [-3, 1, 2, -2, 5, 6]
+print(MaxProductOfThreesolution(&a))
 
 
