@@ -1,5 +1,5 @@
 
-var a = [50, 10, 5 , 1]
-Trianglesolution(&a)
+var a = [1, 5, 2, 1, 4, 0]
+NumberOfDiscIntersectionssolution(&a)
 
 
