@@ -1,4 +1,4 @@
 
-var a = [1, 2, 3]
-MissingIntegersolution(&a)
+var a = [0, 1, 0, 1, 1]
+PassingCarssolution(&a)
 
