@@ -1,3 +1,3 @@
 
-var a = [1, 3, 1, 4, 2, 3, 5, 4]
-PermChecksolution(&a)
+var a = [3, 4, 4, 6, 1, 4, 4]
+MaxCounterssolution(5, &a)
