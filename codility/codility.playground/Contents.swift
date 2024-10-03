@@ -1,3 +1,3 @@
 
-var a = [3, 1, 2, 4, 3]
-TapeEquilibriumsolution(&a)
+var a = [1, 3, 1, 4, 2, 3, 5, 4]
+FrogRiverOnesolution(5, &a)
