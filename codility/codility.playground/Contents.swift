@@ -1,6 +1,5 @@
 
-var a = "CAGCCTA"
-var b = [2, 5, 0]
-var c = [4, 5, 6]
-solution(&a, &b, &c)
+var a = [4, 2, 2, 5, 1, 5, 8]
+print(MinAvgTwoSlicesolution(&a))
+
 
