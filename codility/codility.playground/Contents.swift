@@ -1,4 +1,6 @@
 
-var a = [0, 1, 0, 1, 1]
-CountDivsolution(0, 8, 1)
+var a = "CAGCCTA"
+var b = [2, 5, 0]
+var c = [4, 5, 6]
+solution(&a, &b, &c)
 
