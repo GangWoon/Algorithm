@@ -1,5 +1,7 @@
 import Foundation
 
-var a = 24
+let a = 35
 
-CountFactorssolution(a)
+MinPerimeterRectanglesolution(a)
+
+
