@@ -1,6 +1,5 @@
+import Foundation
 
-var a = [3, 2, 6, -1, 4, 5, -1, 2]
+var a = 24
 
-solution(&a)
-
-
+CountFactorssolution(a)
