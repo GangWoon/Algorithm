@@ -1,6 +1,6 @@
 
-var a = [4, 3, 4, 4, 4, 2]
+var a = [3, 2, -6, 4, 0]
 
-MaxProfitsolution(&a)
+MaxSliceSumsolution(&a)
 
 
