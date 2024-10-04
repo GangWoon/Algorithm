@@ -1,6 +1,6 @@
 
-var a = [8, 8, 5, 7, 9, 8, 7, 4, 8]
+var a = [4, 3, 4, 4, 4, 2]
 
-Dominatorsolution(&a)
+EquiLeadersolution(&a)
 
 
