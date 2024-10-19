@@ -2,6 +2,8 @@ import Foundation
 
 /// bfs, dfs ,bp의 특징을 한번 정리하는게 좋을 거 같음.
 /// 언제 어떻게 쓰이는지에 대해서
+/// 큰거부터 처리하는게 아직까지 경우에선 더 이득이 많았음.
+/// 순열일 경우에 배열을 뒤집는걸 생각하자.
 
 public func FibFrogsolution(_ A: inout [Int]) -> Int {
   let N = A.count
@@ -41,10 +43,6 @@ public func FibFrogsolution(_ A: inout [Int]) -> Int {
   
   return -1
 }
-
-
-
-
 
 //var dict: [Int: Int] = [:]
 //
@@ -87,7 +85,3 @@ public func FibFrogsolution(_ A: inout [Int]) -> Int {
 //  }
 //  return -1
 //}
-
-var a = [0,0,0, 1, 1,0,1,0,0,0,0]
-FibFrogsolution(&a)
-print("Hi")
