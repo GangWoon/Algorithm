@@ -41,6 +41,16 @@ import Foundation
 /// [필수] 문제 조건 확인하기
 /// 
 
+public func CyclicRotationsolution2(_ A : inout [Int], _ K : Int) -> [Int] {
+  let N = A.count
+  if N == K || K == 0 || N == 0 {
+    return A
+  }
+  let n = K % N
+  let target = max((N - n), 0)
+  
+  return Array(A[target ..< N]) + Array(A[0 ..< target])
+}
 
 public func CyclicRotationsolution(_ A : inout [Int], _ K : Int) -> [Int] {
   let N = A.count
