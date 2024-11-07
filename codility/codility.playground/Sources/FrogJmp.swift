@@ -24,6 +24,18 @@
 //X ≤ Y.
 //Copyright
 
+public func FrogJmpsolution2(_ X : Int, _ Y : Int, _ D : Int) -> Int {
+  let distance = Y - X
+  let steps = distance / D
+  
+  if distance % D != 0 {
+    return steps + 1
+  }
+  
+  return steps
+}
+
+
 public func FrogJmpsolution(_ X : Int, _ Y : Int, _ D : Int) -> Int {
   let result = (Y - X) / D
   let a = (Y - X) % D == 0 ? 0 : 1
