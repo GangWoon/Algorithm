@@ -45,6 +45,30 @@ import Foundation
 ///특히 고차함수는 의도가 명확하지 않는 경우 사용하지 않기. [중요함]
 ///totalSum을 정해두고, leftSum을 키워가면서 비교하기. 이렇게 했을 때, 순회를 최소화 시킬 수 있다.
 ///
+///
+
+/// 다시 해당 지점의 값이 필요없다면 배열이 아닌게 더 좋음.
+public func TapeEquilibriumsolution2(_ A : inout [Int]) -> Int {
+  var result = Int.max
+  var max = A.reduce(0, +)
+  var arr = [Int](repeating: 0, count: A.count)
+  arr[0] = A[0]
+  
+  for i in 0..<(A.count - 1) {
+    let sum: Int
+    if i - 1 >= 0 {
+      sum = arr[i - 1] + A[i]
+    } else {
+      sum = A[i]
+    }
+    let compared = (max - sum)
+    result = min(abs(sum - compared), result)
+    arr[i] = sum
+  }
+  
+  return result
+}
+
 
 public func TapeEquilibriumsolution(_ A : inout [Int]) -> Int {
   let totalSum = A.reduce(0, +)
