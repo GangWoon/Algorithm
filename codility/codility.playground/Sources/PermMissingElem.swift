@@ -27,6 +27,11 @@
 /// 문제를 접근해야지 효율적으로 풀 수 있다.
 ///
 
+public func PermMissingElemsolution2(_ A : inout [Int]) -> Int {
+  let N = A.count
+  return ((N + 1) * (N + 2)) / 2 - A.reduce(0, +)
+}
+
 public func PermMissingElemsolution(_ A : inout [Int]) -> Int {
   let N = A.count
   return ((N + 1) * (N + 2) / 2) - A.reduce(into: 0, +=)
