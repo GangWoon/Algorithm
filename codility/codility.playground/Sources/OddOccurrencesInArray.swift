@@ -29,6 +29,20 @@ import Foundation
 //each element of array A is an integer within the range [1..1,000,000,000];
 //all but one of the values in A occur an even number of times.
 
+/// 공간복잡도 생각해서, XOR 연산을 생각할 수 있어야한다.
+public func OddOccurrencesInArraysolution2(_ A : inout [Int]) -> Int {
+  var arr: [Int: Int] = [:]
+  for ele in A {
+    if let _ = arr[ele] {
+      arr[ele] = nil
+    } else {
+      arr[ele] = 1
+    }
+  }
+  
+  return arr.keys.first!
+}
+
 public func OddOccurrencesInArraysolution(_ A : inout [Int]) -> Int {
   var result = 0
   for i in A {
