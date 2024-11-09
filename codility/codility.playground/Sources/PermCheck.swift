@@ -47,6 +47,24 @@
 /// 순열을 계산하는 방법은 전부 다 더하는 방식도 있지만, 갯수와 제일 큰 값을 비교하는 방법도 존재.
 ///
 
+public func PermChecksolution2(_ A : inout [Int]) -> Int {
+  let N = A.count
+  var setA = Set<Int>(A)
+  
+  if setA.count != N {
+    return 0
+  }
+  
+  let targetSum = N * (N + 1) / 2
+  let aSum = A.reduce(0, +)
+  
+  if aSum == targetSum {
+    return 1
+  } else {
+    return 0
+  }
+}
+
 public func PermChecksolution(_ A : inout [Int]) -> Int {
   let N = A.count
   let setA = Set(A)
