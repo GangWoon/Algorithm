@@ -54,6 +54,33 @@
 ///전체 업데이트가 발생했을 때, 배열 전체를 업데이트 시키지 않는게 포인트
 ///increase 연산이 발생했을 때, 분기를 통해서 업데이트
 ///
+///
+
+public func MaxCounterssolution(_ N : Int, _ A : inout [Int]) -> [Int] {
+  var maxValue = 0
+  var minValue = 0
+  var result = [Int](repeating: 0, count: N + 1)
+  
+  for ele in A {
+    if ele == N + 1 {
+      minValue = maxValue
+    } else {
+      var item = max(minValue, result[ele])
+      item += 1
+      result[ele] = item
+      maxValue = max(result[ele], maxValue)
+    }
+  }
+  
+  for index in 1..<result.count {
+    if result[index] < minValue {
+      result[index] = minValue
+    }
+  }
+  
+  result.removeFirst()
+  return result
+}
 
 public func MaxCounterssolution(_ N : Int, _ A : inout [Int]) -> [Int] {
   var arr: [Int] = .init(repeating: 0, count: N)
@@ -65,7 +92,7 @@ public func MaxCounterssolution(_ N : Int, _ A : inout [Int]) -> [Int] {
     if item == N + 1 {
       lastUpdated = currentMax
     } else {
-     let index = item - 1
+      let index = item - 1
       arr[index] = max(lastUpdated, arr[index]) + 1
       currentMax = max(arr[index], currentMax)
     }
@@ -75,5 +102,5 @@ public func MaxCounterssolution(_ N : Int, _ A : inout [Int]) -> [Int] {
     arr[i] = max(arr[i], lastUpdated)
   }
   
- return arr
+  return arr
 }
