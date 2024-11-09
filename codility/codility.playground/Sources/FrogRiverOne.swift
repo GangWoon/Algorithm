@@ -41,6 +41,22 @@
 //N and X are integers within the range [1..100,000];
 //each element of array A is an integer within the range [1..X].
 
+public func FrogRiverOnesolution2(_ X : Int, _ A : inout [Int]) -> Int {
+  var set: Set<Int> = []
+  for i in (1...X) {
+    set.insert(i)
+  }
+  
+  for (index, ele) in A.enumerated() {
+    set.remove(ele)
+    if set.isEmpty {
+      return index
+    }
+  }
+  
+  return -1
+}
+
 public func FrogRiverOnesolution(_ X : Int, _ A : inout [Int]) -> Int {
   var set: Set<Int> = []
   
