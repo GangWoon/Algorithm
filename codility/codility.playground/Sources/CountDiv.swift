@@ -14,6 +14,12 @@
 //K is an integer within the range [1..2,000,000,000];
 //A ≤ B.
 
+public func CountDivsolution2(_ A : Int, _ B : Int, _ K : Int) -> Int {
+  let countB = B / K
+  let countA = A / K - (A % K == 0 ? 1 : 0)
+  
+  return countB - countA
+}
 
 public func CountDivsolution(_ A : Int, _ B : Int, _ K : Int) -> Int {
   let bSum = B / K
