@@ -1,4 +1,4 @@
-fpublic func MaxNonoverlappingSegmentssolution(_ A : inout [Int], _ B : inout [Int]) -> Int {
+public func MaxNonoverlappingSegmentssolution(_ A : inout [Int], _ B : inout [Int]) -> Int {
   let N = A.count
   if N == 0 { return 0 }
   

@@ -56,7 +56,7 @@
 ///
 ///
 
-public func MaxCounterssolution(_ N : Int, _ A : inout [Int]) -> [Int] {
+public func MaxCounterssolution2(_ N : Int, _ A : inout [Int]) -> [Int] {
   var maxValue = 0
   var minValue = 0
   var result = [Int](repeating: 0, count: N + 1)

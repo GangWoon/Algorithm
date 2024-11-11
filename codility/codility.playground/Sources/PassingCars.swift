@@ -39,6 +39,24 @@
 
 /// 문제를 다양하게 볼 수 있어야함.
 
+public func PassingCarssolution2ㄹ(_ A : inout [Int]) -> Int {
+  A.reverse()
+  var value = 0
+  var result = 0
+  
+  for ele in A {
+    if ele == 1 {
+      value += 1
+    } else {
+      result += value
+      if result > 1_000_000_000 {
+        return -1
+      }
+    }
+  }
+  
+  return result
+}
 
 public func PassingCarssolution(_ A : inout [Int]) -> Int {
   var eastCount = 0
