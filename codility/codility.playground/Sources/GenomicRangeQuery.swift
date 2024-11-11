@@ -38,6 +38,126 @@
 ///
 ///MARK: - 이해가 되지 않음 나중에 다시 풀면 좋을듯
 
+/// index 생각하는거 더 디테일하게 접근하기
+/// prefixsum 생각해보기
+public func GenomicRangeQuerysolution2(
+  _ S : inout String,
+  _ P : inout [Int],
+  _ Q : inout [Int]
+) -> [Int] {
+  var prefixA: [Int] = .init(repeating: 0, count: S.count + 1)
+  var prefixC: [Int] = .init(repeating: 0, count: S.count + 1)
+  var prefixG: [Int] = .init(repeating: 0, count: S.count + 1)
+  
+  for (i, ele) in S.enumerated() {
+    prefixA[i + 1] = prefixA[i]
+    prefixC[i + 1] = prefixC[i]
+    prefixG[i + 1] = prefixG[i]
+    
+    if ele == "A" {
+      prefixA[i + 1] += 1
+    } else if ele == "C" {
+      prefixC[i + 1] += 1
+    } else if ele == "G" {
+      prefixG[i + 1] += 1
+    }
+  }
+  
+  var result: [Int] = []
+  for i in 0..<P.count {
+    let left = P[i] + 1
+    let right = Q[i] + 1
+    
+    if prefixA[right] - prefixA[left - 1] > 0 {
+      result.append(1)
+    } else if prefixC[right] - prefixC[left - 1] > 0 {
+      result.append(2)
+    } else if prefixG[right] - prefixG[left - 1] > 0 {
+      result.append(3)
+    } else {
+      result.append(4)
+    }
+  }
+  
+  return result
+}
+
+//public func solution(
+//  _ S : inout String,
+//  _ P : inout [Int],
+//  _ Q : inout [Int]
+//) -> [Int] {
+//  var prefixA: [Int] = .init(repeating: 0, count: S.count)
+//  var prefixC: [Int] = .init(repeating: 0, count: S.count)
+//  var prefixG: [Int] = .init(repeating: 0, count: S.count)
+//
+//  for (i, ele) in Array(S).enumerated() {
+//    if i != 0 {
+//      prefixA[i] = prefixA[i - 1]
+//      prefixC[i] = prefixC[i - 1]
+//      prefixG[i] = prefixG[i - 1]
+//    }
+//
+//    if ele == "A" {
+//      prefixA[i] += 1
+//    } else if ele == "C" {
+//      prefixC[i] += 1
+//    } else if ele == "G" {
+//      prefixG[i] += 1
+//    }
+//  }
+//
+//  var result: [Int] = []
+//  for i in 0..<P.count {
+//    let left = P[i]
+//    let right = Q[i]
+//    if prefixA[right] - prefixA[left] > 0 {
+//      result.append(1)
+//    } else if prefixC[right] - prefixC[left] > 0 {
+//      result.append(2)
+//    } else if prefixG[right] - prefixG[left] > 0 {
+//      result.append(3)
+//    } else {
+//      result.append(4)
+//    }
+//  }
+//
+//  return result
+//}
+
+//public func solution(
+//  _ S : inout String,
+//  _ P : inout [Int],
+//  _ Q : inout [Int]
+//) -> [Int] {
+//  var arr = Array(S)
+//  var result: [Int] = []
+//  let N = P.count
+//
+//  for i in 0..<N {
+//    var min = 4
+//    var copy = P[i]
+//    while copy <= Q[i] {
+//      let value = arr[copy]
+//      if value == "A" {
+//        min = 1
+//        result.append(1)
+//        break
+//      } else if value == "C" {
+//        min = 2
+//      } else if value == "G" {
+//        min = 3
+//      }
+//      copy += 1
+//    }
+//    if min != 1 {
+//      result.append(min)
+//    }
+//  }
+//
+//  return result
+//}
+
 public func GenomicRangeQuerysolution(_ S : inout String, _ P : inout [Int], _ Q : inout [Int]) -> [Int] {
   let N = S.count
   var a: [Int] = .init(repeating: 0, count: N + 1)
