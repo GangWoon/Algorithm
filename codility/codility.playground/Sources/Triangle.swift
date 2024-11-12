@@ -32,6 +32,41 @@
 
 /// 항상 문제 제대로 읽기 열심히 읽기
 
+/// 문제는 통과했지만, 삼각형 부등식 법칙을 활용하는게 더 정확하다고 함.
+/// 정렬된 배열에서, A[i] + A[i + 1] > A[i + 2]가 성립하면
+/// A[i + 1] > A[i + 2] > A[i]
+/// A[i + 2] + A[i] > A[i + 1]은 당연하게 성립한다고 함. 생각해보면 맞음.
+/// 그렇기 때문에 정렬하고 A.count - 2만큼만 순회하면 된다.
+
+//public func Trianglesolution2(_ A : inout [Int]) -> Int {
+//  A.sort()
+//
+//  var i = 0
+//  var j = 1
+//  var k = 2
+//  
+//  while i < A.count - 2 {
+//    if A[i] + A[j] > A[k] {
+//      if A[j] + A[k] > A[i] {
+//        if A[i] + A[k] > A[j] {
+//          return 1
+//        } else {
+//          k += 1
+//        }
+//      } else {
+//        j += 1
+//        k = j + 1
+//      }
+//    } else {
+//      i += 1
+//      j = i + 1
+//      k = j + 1
+//    }
+//  }
+//  
+//  return 0
+//}
+
 public func Trianglesolution(_ A : inout [Int]) -> Int {
   if A.count < 3 {
     return 0
