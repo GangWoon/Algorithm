@@ -37,6 +37,16 @@
 //each element of array A is an integer within the range [−1,000..1,000].
 
 /// 절대로 알고리즘 풀때 배열 전체를 순회하려는 멍청한 생각하지 않기.
+///
+public func MaxProductOfThreesolution2(_ A : inout [Int]) -> Int {
+  A.sort()
+  
+  let N = A.count
+  let left = A[0] * A[1] * A[N - 1]
+  let right = A[N - 3] * A[N - 2] * A[N - 1]
+  
+  return max(left, right)
+}
 
 public func MaxProductOfThreesolution(_ A : inout [Int]) -> Int {
   let sorted = A.sorted()
