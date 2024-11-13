@@ -18,6 +18,25 @@
 //N is an integer within the range [0..200,000];
 //string S is made only of the following characters: '(', '{', '[', ']', '}' and/or ')'.
 
+public func Bracketssolution2(_ S : inout String) -> Int {
+  var stack: [Character] = []
+  for char in S {
+    if char == "{" || char == "[" || char == "(" {
+      stack.append(char)
+    } else {
+      guard let last = stack.last else { return 0 }
+      if (char == "}" && last == "{")
+          || (char == "]" && last == "[")
+          || (char == ")" && last == "(") {
+        stack.removeLast()
+      } else {
+        return 0
+      }
+    }
+  }
+  
+  return stack.isEmpty ? 1 : 0
+}
 
 public func Bracketssolution(_ S : inout String) -> Int {
   var temp: [Character] = []
