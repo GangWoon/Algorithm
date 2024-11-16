@@ -18,6 +18,28 @@
 //N is an integer within the range [0..1,000,000];
 //string S is made only of the characters '(' and/or ')'.
 
+
+
+public func Nestingsolution2(_ S : inout String) -> Int {
+  var stack = [Character]()
+  for c in S {
+    if c == "(" {
+      stack.append(c)
+    } else if c == ")" {
+      if stack.isEmpty {
+        return 0
+      } else {
+        stack.removeLast()
+      }
+    }
+  }
+  if !stack.isEmpty {
+    return 0
+  }
+  
+  return 1
+}
+
 public func Nestingsolution(_ S : inout String) -> Int {
   var arr: [Character] = []
   
