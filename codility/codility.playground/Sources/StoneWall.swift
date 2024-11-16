@@ -24,6 +24,27 @@
 
 // 문제 자체가 무슨말을 하는지 모르겠음.
 
+/// 문제가 무엇을 말하는지 이해가 됨.
+/// 하지만 아직 풀지 못했음. 기억을 잃어버리면 다시 풀기.
+/// MARK: - TODO
+public func StoneWallsolution2(_ H : inout [Int]) -> Int {
+  var stack = [Int]()
+  var blockCount = 0
+  
+  for height in H {
+    while !stack.isEmpty && stack.last! > height {
+      stack.removeLast()
+    }
+    
+    if stack.isEmpty || stack.last! < height {
+      stack.append(height)
+      blockCount += 1
+    }
+  }
+  
+  return blockCount
+}
+
 public func StoneWallsolution(_ H : inout [Int]) -> Int {
   var count = 0
   var stack: [Int] = []
