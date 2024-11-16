@@ -31,6 +31,45 @@
 
 /// MARK: - 다시 풀어보기
 /// 내가 푼게 아님.
+///
+///
+/// 두번째도 내가 풀지 못함. "스위핑 알고리즘" 문제를 더 풀어봐야 알수 있을 거 같음.
+public func NumberOfDiscIntersectionssolution2(_ A : inout [Int]) -> Int {
+  let N = A.count
+  guard N > 1 else { return 0 }
+  
+  var startPoints: [Int] = .init(repeating: 0, count: N)
+  var endPoints: [Int] = .init(repeating: 0, count: N)
+  
+  for i in 0..<N {
+    startPoints[i] = i - A[i]
+    endPoints[i] = i + A[i]
+  }
+  
+  startPoints.sort()
+  endPoints.sort()
+  
+  var activeDiscs = 0
+  var intersections = 0
+  var startIndex = 0
+  var endIndex = 0
+  
+  while startIndex < N {
+    if startPoints[startIndex] <= endPoints[endIndex] {
+      intersections += activeDiscs
+      if intersections > 10_000_000 {
+        return -1
+      }
+      activeDiscs += 1
+      startIndex += 1
+    } else {
+      activeDiscs -= 1
+      endIndex += 1
+    }
+  }
+  
+  return intersections
+}
 
 public func NumberOfDiscIntersectionssolution(_ A : inout [Int]) -> Int {
   let N = A.count
@@ -67,6 +106,6 @@ public func NumberOfDiscIntersectionssolution(_ A : inout [Int]) -> Int {
     
     activeCircles += 1
   }
-    
+  
   return intersectionCount
 }
