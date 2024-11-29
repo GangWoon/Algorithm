@@ -33,6 +33,25 @@ import Foundation
 //N is an integer within the range [0..400,000];
 //each element of array A is an integer within the range [0..200,000].
 
+public func MaxProfitsolution2(_ A : inout [Int]) -> Int {
+  var a: Int = -1
+  var b: Int = 0
+  if A.count < 2 {
+    return 0
+  }
+  
+  for price in A {
+    if a == -1 {
+      a = price
+    } else if price - a > 0 {
+      b = max(b, price - a)
+    } else {
+      a = price
+    }
+  }
+  return b
+}
+
 public func MaxProfitsolution(_ A : inout [Int]) -> Int {
   if A.isEmpty {
     return 0
