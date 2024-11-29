@@ -40,6 +40,53 @@ import Foundation
 //N is an integer within the range [1..100,000];
 //each element of array A is an integer within the range [−1,000,000,000..1,000,000,000].
 
+
+/// 다시 풀기.
+/// 접근범 다 보고 풀음.
+public func EquiLeadersolution2(_ A : inout [Int]) -> Int {
+  let N = A.count
+  var candidate = 0
+  var count = 0
+  
+  for num in A {
+    if count == 0 {
+      candidate = num
+      count += 1
+    } else if candidate == num {
+      count += 1
+    } else {
+      count -= 1
+    }
+  }
+  
+  var leaderCount = 0
+  for num in A {
+    if num == candidate {
+      leaderCount += 1
+    }
+  }
+  
+  guard leaderCount > N / 2 else { return 0 }
+  
+  var equlLeaders = 0
+  var leftLeaderCount = 0
+  
+  for i in 0..<N {
+    if A[i] == candidate {
+      leftLeaderCount += 1
+    }
+    let rightLeaderCount = leaderCount - leftLeaderCount
+    
+    if leftLeaderCount > (i +  1) / 2 , rightLeaderCount > (N - i - 1) / 2 {
+      equlLeaders += 1
+    }
+  }
+  
+  return equlLeaders
+}
+
+
+
 public func EquiLeadersolution(_ A : inout [Int]) -> Int {
   var size: Int = 0
   var value: Int = 0
