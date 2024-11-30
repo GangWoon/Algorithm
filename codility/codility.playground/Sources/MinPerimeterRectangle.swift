@@ -23,8 +23,21 @@ import Foundation
 //
 //N is an integer within the range [1..1,000,000,000].
 
-/// 알고리즘 문제 풀때는 얕은 수학 지식을 들고오지 않기.
+/// 알고리즘 문제 풀때는 얕은 수학 지식을 들고오지 않기. <-- 또 반복함.
 /// 확실하게 문제풀기.
+///
+public func MinPerimeterRectanglesolution2(_ N : Int) -> Int {
+let sqrtN = Int(Double(N).squareRoot())
+var minPerimeter = Int.max
+
+for A in 1...sqrtN where N % A == 0 {
+  let B = N / A
+  let perimeter = 2 * (A + B)
+  minPerimeter = min(minPerimeter, perimeter)
+}
+
+return minPerimeter
+}
 
 public func MinPerimeterRectanglesolution(_ N : Int) -> Int {
     let sqrtN = Int(sqrt(Double(N)))
