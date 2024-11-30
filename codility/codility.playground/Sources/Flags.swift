@@ -61,6 +61,52 @@ import Foundation
 //each element of array A is an integer within the range [0..1,000,000,000].
 // MARK: - 다시 풀기
 
+/// 이진트리 검색 방식 다른거 풀어봐야할듯?
+public func Flagssolution2(_ A: inout [Int]) -> Int {
+  let N = A.count
+  guard N > 2 else { return 0 }
+  
+  /// 필요한 데이터를 저장하는 방식이 중요.
+  /// 배열을 무작정 만들 필요는 없음.
+  var peaks = [Int]()
+  for i in 1..<N-1 {
+    if A[i - 1] < A[i], A[i] > A[i + 1] {
+      peaks.append(i)
+    }
+  }
+  if peaks.isEmpty { return 0 }
+  
+  var left = 1
+  var right = peaks.count
+  var result = 0
+  
+  func canPlaceFlags(_ k: Int) -> Bool {
+    var flags = 1
+    var lastFlagPosition = peaks[0]
+    
+    for i in 1..<peaks.count {
+      if peaks[i] - lastFlagPosition >= k {
+        flags += 1
+        lastFlagPosition = peaks[i]
+        if flags == k { return true }
+      }
+    }
+    return flags >= k
+  }
+  
+  while left <= right {
+    let mid = (left + right) / 2
+    if canPlaceFlags(mid) {
+      result = mid
+      left = mid + 1
+    } else {
+      right = mid - 1
+    }
+  }
+  
+  return result
+}
+
 public func Flagssolution(_ A: inout [Int]) -> Int {
   if A.count < 3 {
     return 0
