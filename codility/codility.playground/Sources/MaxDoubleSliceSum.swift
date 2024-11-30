@@ -46,6 +46,31 @@ import Foundation
 //each element of array A is an integer within the range [−10,000..10,000].
 /// 문제를 잘 분석해보기
 /// MARK: - 다시 풀어보기
+///
+/// X + 1 .... Y - 1, Y + 1.... Z - 1 이걸 볼 수 있어야 풀 수 있음.
+///
+///
+public func MaxDoubleSliceSumsolution2(_ A : inout [Int]) -> Int {
+  let N = A.count
+  if N < 3 { return 0 }
+  
+  var maxEndingHere = Array(repeating: 0, count: N)
+  for i in 1..<N-1 {
+    maxEndingHere[i] = max(0, maxEndingHere[i - 1] + A[i])
+  }
+  
+  var maxStartingHere = Array(repeating: 0, count: N)
+  for i in stride(from: N - 2, through: 1, by: -1) {
+    maxStartingHere[i] = max(0, maxStartingHere[i + 1] + A[i])
+  }
+  
+  var maxDoubleSlice = 0
+  for i in 1..<N-1 {
+    maxDoubleSlice = max(maxDoubleSlice, maxEndingHere[i - 1] + maxStartingHere[i + 1])
+  }
+  
+  return maxDoubleSlice
+}
 
 public func MaxDoubleSliceSumsolution(_ A : inout [Int]) -> Int {
   let N = A.count
