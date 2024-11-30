@@ -16,6 +16,22 @@ import Foundation
 //
 //N is an integer within the range [1..2,147,483,647].
 
+public func CountFactorssolution2(_ N : Int) -> Int {
+
+  let value = Int(sqrt(Double(N)))
+  
+  var result = 0
+  
+  for i in 1...value {
+    if N % i == 0 {
+      print(i)
+      result += 1
+    }
+  }
+  
+  return (result * 2) + (value * value == N ? -1 : 0)
+}
+
 public func CountFactorssolution(_ N : Int) -> Int {
   let value = Int(sqrt(Double(N)))
   var count = 0
