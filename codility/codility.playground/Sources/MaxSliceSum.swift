@@ -26,6 +26,17 @@ import Foundation
 
 /// 카데인 알고리즘을 생각할 수 있어야함.
 /// 현재까지의 합이 음수일 경우, 새로 시작하는게 최적화.
+public func MaxSliceSumsolution2(_ A : inout [Int]) -> Int {
+  var maxSum = A[0]
+  var currentSum = A[0]
+  
+  for i in 1..<A.count {
+    currentSum = max(A[i], currentSum + A[i])
+    maxSum = max(maxSum, currentSum)
+  }
+  
+  return maxSum
+}
 
 public func MaxSliceSumsolution(_ A : inout [Int]) -> Int {
   var currentMax = A[0]
