@@ -72,6 +72,59 @@ import Foundation
 /// 2. 가장 큰 값을 찾는거면 큰값부터 비교하기
 /// 3. 범위를 체크하는 방법을 여러 방면으로 생각해보기
 
+/// -> 그래도 처음보다는 문제 접근을 잘함 굿 :)
+/// 필요한거에 따라서 문제를 순차적으로 작게 설계하기
+
+public func Peakssolution2(_ A : inout [Int]) -> Int {
+  let n = A.count
+  if n < 3 { return 0 }
+  
+  var peaks: [Int] = []
+  for i in 1..<n-1 {
+    if A[i] > A[i-1] && A[i] > A[i+1] {
+      peaks.append(i)
+    }
+  }
+  if peaks.isEmpty { return 0 }
+
+  func getDivisors(_ num: Int) -> [Int] {
+    var divisors: [Int] = []
+    for i in 1...Int(Double(num).squareRoot()) {
+      if num % i == 0 {
+        divisors.append(i)
+        if i != num / i {
+          divisors.append(num / i)
+        }
+      }
+    }
+    return divisors.sorted()
+  }
+  let divisors = getDivisors(n)
+  for k in divisors.reversed() {
+    let blockSize = n / k
+    var blockCount = 0
+    var peakIndex = 0
+    
+    for i in 0..<k {
+      let start = i * blockSize
+      let end = (i + 1) * blockSize - 1
+      while peakIndex < peaks.count && peaks[peakIndex] <= end {
+        if peaks[peakIndex] >= start {
+          blockCount += 1
+          break
+        }
+        peakIndex += 1
+      }
+    }
+    
+    if blockCount == k {
+      return k
+    }
+  }
+
+  return 0
+}
+
 public func Peakssolution(_ A : inout [Int]) -> Int {
   let N = A.count
   if N < 3 {
