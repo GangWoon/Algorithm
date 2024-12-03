@@ -45,7 +45,7 @@ import Foundation
 ///
 ///  세미 프라임을 계산할 때, 소수만 계산하게 구현(개선점) -> NlogN 보다 작다.
 ///  내가 작성한 코드는 N^2까지 비교를하게 됨. 왜냐하면 루트 x까지 매번 반복하기 때문. break를 하는것도 중요하지만 계산을 줄일 수 있는 방법을 찾아야함.
-public func CountSemiprimessolution(_ N: Int, _ P: inout [Int], _ Q: inout [Int]) -> [Int] {
+public func CountSemiprimessolution2(_ N: Int, _ P: inout [Int], _ Q: inout [Int]) -> [Int] {
   if N < 4 {
       return [Int](repeating: 0, count: P.count)
   }
