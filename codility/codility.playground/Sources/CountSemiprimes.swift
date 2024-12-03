@@ -38,6 +38,123 @@ import Foundation
 //each element of arrays P and Q is an integer within the range [1..N];
 //P[i] ≤ Q[i].
 
+/// 에라토스테네스의 체를 사용해서 N까지의 소수를 n log log n의 시간으로 구할 수 있다.
+///  1. N + 1의 배열을 true로 생성
+///  2. 0, 1은 소수가 아니기 때문에 false로 초기화 시켜준다. arr[0], arr[1] = false
+///  3. 2부터 루트 n까지 순회하면서 배수를 모두 false로 바꿔준다.
+///
+///  세미 프라임을 계산할 때, 소수만 계산하게 구현(개선점) -> NlogN 보다 작다.
+///  내가 작성한 코드는 N^2까지 비교를하게 됨. 왜냐하면 루트 x까지 매번 반복하기 때문. break를 하는것도 중요하지만 계산을 줄일 수 있는 방법을 찾아야함.
+public func CountSemiprimessolution(_ N: Int, _ P: inout [Int], _ Q: inout [Int]) -> [Int] {
+  if N < 4 {
+      return [Int](repeating: 0, count: P.count)
+  }
+  
+  var isPrime: [Bool] = .init(repeating: true, count: N + 1)
+  isPrime[0] = false
+  isPrime[1] = false
+  
+  for i in 2...Int(sqrt(Double(N))) {
+    if isPrime[i] {
+      for j in stride(from: i * i, through: N, by: i) {
+        isPrime[j] = false
+      }
+    }
+  }
+  
+  var isSemiprime = [Int](repeating: 0, count: N + 1)
+  for i in 2...N {
+    if isPrime[i] {
+      for j in i...N where isPrime[j] {
+        if i * j > N {
+          break
+        }
+        isSemiprime[i * j] = 1
+      }
+    }
+  }
+  
+  var semiprimePrefixSum = [Int](repeating: 0, count: N + 1)
+  for i in 1...N {
+    semiprimePrefixSum[i] = semiprimePrefixSum[i - 1] + isSemiprime[i]
+  }
+  
+  return zip(P, Q)
+    .map { semiprimePrefixSum[$1] - semiprimePrefixSum[$0 - 1] }
+}
+
+
+//func divisors(_ n: Int) -> [Int] {
+//  let value = Int(Double(n).squareRoot())
+//  var result: [Int] = []
+//  for i in 1...value {
+//    if n % i == 0 {
+//      result.append(i)
+//      if i * i != n {
+//        result.append(n / i)
+//      }
+//    }
+//  }
+//  return result.sorted()
+//}
+//
+//public func solution(
+//  _ N : Int,
+//  _ P : inout [Int],
+//  _ Q : inout [Int]
+//) -> [Int] {
+//
+//  var primes: [Int] = .init(repeating: 0, count: N + 1)
+//  var x = 2
+//
+//  while x <= N {
+//    var flag = false
+//    for i in 1...Int(Double(x).squareRoot()) {
+//      if x % i == 0, i != 1 {
+//        flag = true
+//        break
+//      }
+//    }
+//    if !flag {
+//      primes[x] = 1
+//    }
+//    x += 1
+//  }
+//
+//  var y = 4
+//  var semiPrimes: [Int] = .init(repeating: 0, count: N + 1)
+//
+//  while y <= N {
+//    semiPrimes[y] = semiPrimes[y - 1]
+//    var flag = false
+//    let items = divisors(y)
+//    for item in items where item != 1 && item != y {
+//      if primes[item] == 1 {
+//      } else {
+//        flag = true
+//        break
+//      }
+//    }
+//
+//    if !flag, items.count != 2 {
+//      semiPrimes[y] += 1
+//    }
+//
+//    y += 1
+//  }
+//
+//  for (index, item) in semiPrimes.enumerated() {
+//    print(index, item)
+//  }
+//
+//
+//
+//  return zip(P, Q)
+//    .map { semiPrimes[$1] - semiPrimes[$0 - 1] }
+//}
+
+
+
 /// 내가 푼 방법:
 /// 범위를 순회하며, semiprime인지 아닌지 확인하기
 /// 맞으면 += 1
