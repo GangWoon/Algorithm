@@ -45,3 +45,59 @@ func gcd(_ a: Int, _ b: Int) -> Int {
   return gcd(min, value)
 }
 ```
+
+## BFS[Breadth-First Search](너비 우선 탐색)
+![image](https://github.com/user-attachments/assets/a6793830-b31b-4647-ac8d-b550632eb1a5)
+시작 노드에서 가까운 노드부터 탐색한 뒤, 점차 멀리있는 노드로 진행합니다.
+(아래 [1, 2]의 경우, 그림을 보면 이해가 됩니다. 3번은 외우기) 
+
+### 특징
+1. 레벨 기반 탐색
+시작 노드에서 특정 거리에 있는 모든 노드를 탐색한 뒤, 다음 레벨에 있는 노드로 넘어간다.
+
+2. 큐 사용
+탐색할 노드들을 순서대로 저장하고 FIFO방식으로 처리한다.
+
+3. 최단 경로 보장
+가중치가 없는 그래프의 경우 최단 경로를 보장 
+
+### 동작 과정
+1. 초기화
+시작 노드를 큐에 추가
+방문한 노드를 기록하기 위해서 Set을 사용하기([Bool]을 사용할 수도 있지만, 공간 복잡도를 생각해보면 Set이 더 좋은 접근인거 같습니다.)
+2. 탐색 진행
+큐에서 노드를 꺼내서, 현재 노드에서 연결된 노드를 탐색
+아직 방문하지 않는 이웃 노드의 경우 큐에 추가, 방문 여부 기록하기
+
+3. 종료 조건
+큐가 비어있을 경우, 목표 노드에 도달할 경우
+```
+BFS(graph, start):
+    initialize queue with start
+    initialize visited as an empty set
+    add start to visited
+    
+    while queue is not empty:
+        initialize nextQueue as empty
+        
+        for node in queue:
+            process(node)
+            
+            for neighbor in graph.neighbors(node):
+                if neighbor is not in visited:
+                    add neighbor to visited
+                    add neighbor to nextQueue
+        
+        queue = nextQueue
+```
+
+### 활용 사례
+1. 최단 경로 탐색
+가중치가 없는 그래프의 경우 ex) 미로 찾기(2D 그리드 탐색), 네트워크 거리 계산, 레벨 탐색
+
+2. 그래프의 연결성 확인
+연결 그래프인지 확인하거나, 연결 요소의 개수를 찾을 때 사용
+
+3. Flood Fill 알고리즘 <- TODO: 나중에 공부하기
+그림판 색 채우기와 같은 문제(물이 퍼지는 시뮬레이션) 
+
