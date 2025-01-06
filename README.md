@@ -101,3 +101,19 @@ BFS(graph, start):
 3. Flood Fill 알고리즘 <- TODO: 나중에 공부하기
 그림판 색 채우기와 같은 문제(물이 퍼지는 시뮬레이션) 
 
+## Binary Search
+"정렬된 배열"에서 원하는 값을 빠르게 찾기 위한 알고리즘입니다. 배열의 중간 값을 기준으로 탐색 범위를 절반씩 줄이는 방식으로 동작하며, 시간 복잡도는  O(log N)입니다.
+
+left, right을 기준으로 mid(left + right / 2)로 설정합니다.
+
+target값과 arr[mid] 값을 비교합니다.
+arr[mid] == target 이면 값을 찾음.
+arr[mid] < target -> left = mid + 1
+arr[mid] > target -> right = mid - 1 로 설정
+
+left > right가 되면 탐색 종료, 원하는 값을 찾지 못했다면 실패로 간주
+
+Binary Search가 어려운 이유는 "탐색 범위"와 "조건" 정의
+이진 탐색은 단순한 값을 찾는 것이 아니라 조건에 맞는 최소/최대를 찾는 경우가 많습니다. <- 문제의 본질을 잘못 이해하면 올바른 설계가 불가능.
+결론: 많이 더 풀어보고 감을 잡아야할 거 같습니다;;.
+ 
