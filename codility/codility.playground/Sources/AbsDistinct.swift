@@ -1,4 +1,11 @@
-
+public func AbsDistinctsolution2(_ A : inout [Int]) -> Int {
+  var setA: Set<Int> = []
+  A.forEach {
+    setA.insert(abs($0))
+  }
+  
+  return setA.count
+}
 
 
 public func AbsDistinctsolution(_ A : inout [Int]) -> Int {
