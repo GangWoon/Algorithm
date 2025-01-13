@@ -1,3 +1,19 @@
+/// 언제 그리드를 사용해야할지 감이 오지 않음;
+public func TieRopessolution2(_ K : Int, _ A : inout [Int]) -> Int {
+  var result = 0
+  
+  var sum = 0
+  for a in A {
+    sum += a
+    if sum >= K {
+      sum = 0
+      result += 1
+    }
+  }
+  
+  return result
+}
+
 public func TieRopessolution(_ K : Int, _ A : inout [Int]) -> Int {
   var result = 0
   var temp = 0
